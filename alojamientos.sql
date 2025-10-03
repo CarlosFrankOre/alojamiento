@@ -9,7 +9,7 @@ CREATE TABLE users (
     user_role ENUM('user', 'admin') DEFAULT 'user' NOT NULL
 );
 
--- Tabla de Alojamientos
+-- Tabla de Alojamientos (precargados)
 CREATE TABLE accommodations (
     accommodation_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -29,5 +29,10 @@ CREATE TABLE user_accommodations (
 );
 
 -- Usuario Administrador (IMPORTANTE: la clave del admin es: 12345678)
+-- Ejemplo: Contraseña "adminpass" (debes usar una herramienta para generar el hash real)
 INSERT INTO users (username, password_hash, email, user_role) VALUES
 ('admin', '$2y$10$Aj5JR411kLwccshAV8JsaeiR/VWFbzpJNZUkAuhA3Rh9KYwBwnIOO', 'admin@app.com', 'admin');
+
+-- Precargar un Alojamiento (CREATE Inicial)
+INSERT INTO accommodations (name, description, price, image_url) VALUES
+('Casa de Playa Vista Azul', 'Hermosa casa frente al mar, con piscina privada.', 250.00, 'casa_playa.jpg')
